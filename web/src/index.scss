@@ -1,4 +1,16 @@
-body {
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
+* {
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: 1rem;
   margin: 0;
   padding: 0;
+  text-decoration: none;
+  box-sizing: border-box;
+  list-style: none;
+}
+body {
+  width: 100%;
+  height: 100%;
+  background: #222831;
 }
