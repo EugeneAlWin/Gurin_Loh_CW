@@ -9,26 +9,14 @@
   line-height: 16px;
   text-align: center;
   padding: 0 3%;
+  width: 200px;
   &:hover {
     transform: scale(1.2);
   }
   a {
     color: white;
-  }
-  &:last-child {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50px;
-    background-color: #069157;
-    width: 7rem;
-    height: 2rem;
-    transition: 0.7s;
     &:hover {
-      background-color: #ff4c05;
-      a {
-        color: black !important;
-      }
+      color: rgb(78, 211, 78) !important;
     }
   }
 }

@@ -1,0 +1,20 @@
+.container {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  top: 30%;
+  width: 100%;
+}
+.h1 {
+  color: white;
+  text-align: center;
+  font-size: 42pt;
+}
+
+.h3 {
+  color: white;
+  text-align: center;
+  font-size: 22pt;
+  margin-bottom: 3%;
+}
