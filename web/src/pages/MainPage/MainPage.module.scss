@@ -3,18 +3,24 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  top: 30%;
+  top: 20%;
   width: 100%;
 }
 .h1 {
   color: white;
   text-align: center;
-  font-size: 42pt;
+  font-size: 38pt;
 }
 
 .h3 {
   color: white;
   text-align: center;
-  font-size: 22pt;
+  font-size: 20pt;
   margin-bottom: 3%;
+}
+
+.h4 {
+  color: white;
+  text-align: center;
+  font-size: 16pt;
 }
