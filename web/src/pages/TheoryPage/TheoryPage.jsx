@@ -2,6 +2,9 @@ import React from 'react';
 import Image from '../../components/Image.jsx';
 import FlipText from '../../components/UI/FlipText/FlipText.jsx';
 import ss from './TheoryPage.module.scss';
+import CoeffOfRessistance from '../../img/CoeffOfResistance.png';
+import ResisDepend from '../../img/ResisDepend.jpg';
+import Schema from '../../img/Schema.jpg';
 export default function TheoryPage() {
   return (
     <div className={ss.container}>
@@ -28,7 +31,7 @@ export default function TheoryPage() {
         проводника при приращении его температуры на 1 К: <br />
         <br />
         <Image
-          src="http://profil.adu.by/filter/wiris/integration/showimage.php?formula=e049fbabbc1bfe0b14354becaa85c2ee&refererquery=?course=13/category=11"
+          src={CoeffOfRessistance}
           alt="Картинка"
           style={{
             background: '#069157',
@@ -41,17 +44,17 @@ export default function TheoryPage() {
         <br />
         где ρ0 и ρ — удельные сопротивления вещества проводника соответственно
         при температуре T0 = 273 К (0 °С) и данной температуре Т. <br />
-        Из формулы (1) следует, что{' '}
+        Из формулы (1) следует, что
         <mark style={{ background: '#069157', color: 'black' }}>
           ρ = ρ0(1 + αΔT)
         </mark>
         , где ΔT = T - T0 — приращение абсолютной температуры проводника,
         которое совпадает с приращением температуры по шкале Цельсия ΔT = Δt.
         Таким образом, удельное сопротивление вещества металлического проводника
-        возрастает с увеличением температуры. Зависимость на графике: <br />{' '}
+        возрастает с увеличением температуры. Зависимость на графике: <br />
         <br />
         <Image
-          src="http://profil.adu.by/pluginfile.php/3558/mod_book/chapter/9381/p197_1.jpg"
+          src={ResisDepend}
           alt="Картинка"
           style={{
             background: 'lightgreen',
@@ -63,7 +66,7 @@ export default function TheoryPage() {
         />
         <br />
         <Image
-          src="http://profil.adu.by/pluginfile.php/3558/mod_book/chapter/9381/%D0%A0%D0%B8%D1%81.%20197.jpg"
+          src={Schema}
           alt="картинка 2"
           style={{
             margin: '0 auto',

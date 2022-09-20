@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Image from '../../Image.jsx';
 import ss from './FlipText.module.scss';
+import Resistance from '../../../img/Resistance.jpg';
 export default function FlipText({ text }) {
   const [isText, setIsText] = useState(true);
   return isText ? (
@@ -21,7 +22,7 @@ export default function FlipText({ text }) {
       onClick={() => setIsText(true)}
     >
       <Image
-        src="https://works.doklad.ru/images/rwBpE1CupAs/68be508f.gif"
+        src={Resistance}
         alt={'Сопротивление формула'}
         style={{
           width: '10%',
