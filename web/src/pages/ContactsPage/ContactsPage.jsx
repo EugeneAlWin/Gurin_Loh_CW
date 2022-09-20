@@ -1,5 +1,5 @@
 import React from 'react';
-import Image from '../../components/Image.jsx';
+import Image from '../../components/UI/Image/Image.jsx';
 import ILoveGourine from '../../img/ILoveGourine.jpg';
 export default function ContactsPage() {
   return (

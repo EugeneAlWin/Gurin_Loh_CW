@@ -1,39 +1,34 @@
 import React, { useState } from 'react';
-import Image from '../../Image.jsx';
+import Image from '../Image/Image.jsx';
 import ss from './FlipText.module.scss';
-export default function FlipText({ text }) {
+export default function FlipText({
+  text,
+  classNameText,
+  imgSrc,
+  classNameImg,
+  classNameImgDescr,
+  imgDescr = null,
+  stylesText = null,
+  stylesImg = null,
+}) {
   const [isText, setIsText] = useState(true);
   return isText ? (
-    <span className={ss.text} onClick={() => setIsText(false)}>
+    <span
+      className={classNameText}
+      onClick={() => setIsText(false)}
+      style={stylesText}
+    >
       {text}
     </span>
   ) : (
-    <div
-      style={{
-        position: 'absolute',
-        width: '100%',
-        height: '100%',
-        top: '0',
-        left: 0,
-        display: 'flex',
-        backgroundColor: ' rgb(0, 0, 0, 0.5)',
-      }}
-      onClick={() => setIsText(true)}
-    >
+    <div className={ss.img_container} onClick={() => setIsText(true)}>
       <Image
-        src="https://works.doklad.ru/images/rwBpE1CupAs/68be508f.gif"
-        alt={'Сопротивление формула'}
-        style={{
-          width: '10%',
-          position: 'relative',
-          display: 'flex',
-          justifyContent: 'center',
-          background: 'lightgreen',
-          margin: 'auto',
-          alignItems: 'center',
-          zIndex: 1,
-        }}
-        onDoubleClick={() => setIsText(true)}
+        src={imgSrc}
+        description={imgDescr ?? text}
+        classNameImg={classNameImg}
+        classNameImgDescr={classNameImgDescr}
+        stylesImg={stylesImg}
+        onClick={(e) => e.stopPropagation()}
       />
     </div>
   );

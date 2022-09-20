@@ -6,7 +6,7 @@ export default function Navbar() {
     ['/', 'Главная страница'],
     ['/theory', 'Теоретические сведения'],
     ['/structure', 'Структура установки'],
-    ['/simulator', 'Симулятор сведения'],
+    ['/simulator', 'Симулятор установки'],
     ['/contacts', 'Контакты'],
   ];
   return (
