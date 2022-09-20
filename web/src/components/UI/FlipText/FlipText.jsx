@@ -1,11 +1,20 @@
 import React, { useState } from 'react';
-import Image from '../../Image.jsx';
+import Image from '../Image/Image.jsx';
 import ss from './FlipText.module.scss';
-export default function FlipText({ text, imgSrc, stylesText, stylesImg }) {
+export default function FlipText({
+  text,
+  classNameText,
+  imgSrc,
+  classNameImg,
+  classNameImgDescr,
+  imgDescr = null,
+  stylesText = null,
+  stylesImg = null,
+}) {
   const [isText, setIsText] = useState(true);
   return isText ? (
     <span
-      className={ss.text}
+      className={classNameText}
       onClick={() => setIsText(false)}
       style={stylesText}
     >
@@ -15,12 +24,12 @@ export default function FlipText({ text, imgSrc, stylesText, stylesImg }) {
     <div className={ss.img_container} onClick={() => setIsText(true)}>
       <Image
         src={imgSrc}
-        alt={imgSrc}
-        style={stylesImg}
+        description={imgDescr ?? text}
+        classNameImg={classNameImg}
+        classNameImgDescr={classNameImgDescr}
+        stylesImg={stylesImg}
         onClick={(e) => e.stopPropagation()}
       />
-      <br />
-      <p>{text}</p>
     </div>
   );
 }
