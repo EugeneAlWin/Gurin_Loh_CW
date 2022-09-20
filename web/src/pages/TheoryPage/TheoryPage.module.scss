@@ -1,0 +1,50 @@
+.container {
+  padding-top: 1%;
+  color: white;
+  display: flex;
+  justify-content: left;
+  margin: auto;
+  flex-direction: column;
+  width: 80%;
+}
+.head {
+  font-size: 22pt;
+}
+.body {
+  margin-top: 1%;
+}
+
+.imgg {
+  background: #069157;
+  margin: 0 auto;
+  display: flex;
+  width: 15vw;
+}
+
+.img_cover {
+  width: 20%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  background: lightgreen;
+  align-items: center;
+  z-index: 1;
+}
+.flip_text {
+  color: red;
+  cursor: pointer;
+}
+
+.img_descr {
+  text-align: center;
+  margin-top: 1%;
+}
+
+.mark {
+  background: #069157;
+  color: black;
+}
+.button_container {
+  display: flex;
+  justify-content: center;
+}
