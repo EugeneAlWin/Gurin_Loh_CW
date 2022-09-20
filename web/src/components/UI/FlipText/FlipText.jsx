@@ -1,41 +1,26 @@
 import React, { useState } from 'react';
 import Image from '../../Image.jsx';
 import ss from './FlipText.module.scss';
-import Resistance from '../../../img/Resistance.jpg';
-export default function FlipText({ text }) {
+export default function FlipText({ text, imgSrc, stylesText, stylesImg }) {
   const [isText, setIsText] = useState(true);
   return isText ? (
-    <span className={ss.text} onClick={() => setIsText(false)}>
+    <span
+      className={ss.text}
+      onClick={() => setIsText(false)}
+      style={stylesText}
+    >
       {text}
     </span>
   ) : (
-    <div
-      style={{
-        position: 'absolute',
-        width: '100%',
-        height: '100%',
-        top: '0',
-        left: 0,
-        display: 'flex',
-        backgroundColor: ' rgb(0, 0, 0, 0.5)',
-      }}
-      onClick={() => setIsText(true)}
-    >
+    <div className={ss.img_container} onClick={() => setIsText(true)}>
       <Image
-        src={Resistance}
-        alt={'Сопротивление формула'}
-        style={{
-          width: '10%',
-          position: 'relative',
-          display: 'flex',
-          justifyContent: 'center',
-          background: 'lightgreen',
-          margin: 'auto',
-          alignItems: 'center',
-          zIndex: 1,
-        }}
-        onDoubleClick={() => setIsText(true)}
+        src={imgSrc}
+        alt={imgSrc}
+        style={stylesImg}
+        onClick={(e) => e.stopPropagation()}
       />
+      <br />
+      <p>{text}</p>
     </div>
   );
 }

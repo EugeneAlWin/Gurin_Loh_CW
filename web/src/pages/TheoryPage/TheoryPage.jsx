@@ -5,14 +5,29 @@ import ss from './TheoryPage.module.scss';
 import CoeffOfRessistance from '../../img/CoeffOfResistance.png';
 import ResisDepend from '../../img/ResisDepend.jpg';
 import Schema from '../../img/Schema.jpg';
+import Resistance from '../../img/Resistance.jpg';
+
 export default function TheoryPage() {
+  const a = {
+    width: '10%',
+    position: 'relative',
+    display: 'flex',
+    justifyContent: 'center',
+    background: 'lightgreen',
+    alignItems: 'center',
+    zIndex: 1,
+  };
   return (
     <div className={ss.container}>
       <h1 className={ss.head}>Теоретические сведения</h1>
       <div className={ss.body}>
-        <FlipText text="Сопротивление металла " /> зависит от нескольких
-        переменных: рода вещества (удельного сопротивления ρ), длины l и площади
-        поперечного сечения S
+        <FlipText
+          text="Сопротивление металла "
+          stylesImg={a}
+          imgSrc={Resistance}
+        />
+        зависит от нескольких переменных: рода вещества (удельного сопротивления
+        ρ), длины l и площади поперечного сечения S
         <br /> <br />
         Удельное сопротивление вещества металлического проводника зависит от
         концентрации свободных носителей заряда и частоты их столкновений с
@@ -33,12 +48,12 @@ export default function TheoryPage() {
         <Image
           src={CoeffOfRessistance}
           alt="Картинка"
-          style={{
-            background: '#069157',
-            margin: '0 auto',
-            display: 'flex',
-            width: '15vw',
-          }}
+          // style={{
+          //   background: '#069157',
+          //   margin: '0 auto',
+          //   display: 'flex',
+          //   width: '15vw',
+          // }}
           description="Формула 1. Температурный коэффициент сопротивления "
         />
         <br />
