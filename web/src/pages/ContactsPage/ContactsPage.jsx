@@ -3,7 +3,7 @@ import Image from '../../components/UI/Image/Image.jsx';
 import ILoveGourine from '../../img/ILoveGourine.jpg';
 export default function ContactsPage() {
   return (
-    <div style={{ textAlign: 'center', marginTop: '5%' }}>
+    <div style={{ textAlign: 'center', paddingTop: '7%' }}>
       <Image src={ILoveGourine} alt="Гурин крутой" style={{ width: '25%' }} />
       <br /> <br />
       <span

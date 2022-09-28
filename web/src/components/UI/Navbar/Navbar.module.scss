@@ -20,9 +20,12 @@
   }
 }
 .navbar {
+  position: fixed;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 10vh;
+  height: 8vh;
   width: 100%;
+  background-color: #1f2328;
+  z-index: 1;
 }
