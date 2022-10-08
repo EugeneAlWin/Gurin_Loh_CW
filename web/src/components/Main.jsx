@@ -12,6 +12,7 @@ export default function Main() {
       <Route path="/structure" element={<StructurePage />} />
       <Route path="/simulator" element={<h1>4</h1>} />
       <Route path="/contacts" element={<ContactsPage />} />
+      <Route path="*" element={<MainPage />} />
     </Routes>
   );
 }
