@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - GT
+  - TermShell
+  - BurnerShell
+  - CondShell
+  - RackShell
+  - OhmShell
   layers:
   - Default
   - TransparentFX
