@@ -11,7 +11,7 @@ public class TermometerPointer : MonoBehaviour, IPointerEnterHandler,IPointerExi
     void Start()
     {
         text = GameObject.FindGameObjectsWithTag("GT")[0].GetComponent<Text>();
-        termomParts = GameObject.FindGameObjectsWithTag("TermShell");
+        termomParts = GameObject.FindGameObjectsWithTag("ThermShell");
 
     }
     public void OnPointerEnter(PointerEventData eventData)
