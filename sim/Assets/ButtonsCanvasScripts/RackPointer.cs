@@ -2,12 +2,18 @@
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-
-public class RackPointer : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class RackPointer : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
+    
     [SerializeField] private Material material;
     private GameObject[] rackParts;
     private Text text;
+    CameraScript cs;
+
+    void Awake()
+    {
+        cs = GameObject.Find("Main Camera").GetComponent<CameraScript>();
+    }
     void Start()
     {
         text = GameObject.FindGameObjectsWithTag("GT")[0].GetComponent<Text>();
@@ -28,6 +34,11 @@ public class RackPointer : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         {
             part.GetComponent<Renderer>().material = material;
         }
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        cs.SetNeedPosAndRot(new Vector3(12.65f, 14.58f, -184.33f), Quaternion.Euler(16.772f, -44.71f, -1.532f));
     }
 
 }

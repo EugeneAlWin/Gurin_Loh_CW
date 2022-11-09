@@ -2,12 +2,17 @@
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ConductorsPointer : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class ConductorsPointer : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     [SerializeField] private Material material;
     private GameObject[] condParts;
     private Text text;
+    CameraScript cs;
 
+    void Awake()
+    {
+        cs = GameObject.Find("Main Camera").GetComponent<CameraScript>();
+    }
     void Start()
     {
         text = GameObject.FindGameObjectsWithTag("GT")[0].GetComponent<Text>();
@@ -30,5 +35,8 @@ public class ConductorsPointer : MonoBehaviour, IPointerEnterHandler, IPointerEx
             part.GetComponent<Renderer>().material = material;
         }
     }
-
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        cs.SetNeedPosAndRot(new Vector3(10.91f, 14.91f, -186.72f), Quaternion.Euler(24.068f, 4.022f, 0));
+    }
 }
