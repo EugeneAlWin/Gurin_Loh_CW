@@ -12,28 +12,19 @@ public class ConductorsPointer : MonoBehaviour, IPointerEnterHandler, IPointerEx
     void Awake()
     {
         cs = GameObject.Find("Main Camera").GetComponent<CameraScript>();
-    }
-    void Start()
-    {
         text = GameObject.FindGameObjectsWithTag("GT")[0].GetComponent<Text>();
         condParts = GameObject.FindGameObjectsWithTag("CondShell");
-
     }
+
     public void OnPointerEnter(PointerEventData eventData)
     {
         text.text = "Проводники. Через них проходит ток. В данной установке их нужно нагреть и посмотреть на то, как меняется сопротивление.";
-        foreach (var part in condParts)
-        {
-            part.GetComponent<Renderer>().material.color = Color.green;
-        }
+        foreach (var part in condParts) part.GetComponent<Renderer>().material.color = Color.green;
     }
     public void OnPointerExit(PointerEventData eventData)
     {
         text.text = "";
-        foreach (var part in condParts)
-        {
-            part.GetComponent<Renderer>().material = material;
-        }
+        foreach (var part in condParts) part.GetComponent<Renderer>().material = material;
     }
     public void OnPointerClick(PointerEventData eventData)
     {

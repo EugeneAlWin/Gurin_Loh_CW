@@ -7,33 +7,24 @@ public class ThermometerPointer : MonoBehaviour, IPointerEnterHandler,IPointerEx
     [SerializeField] private Material material;
     private GameObject[] thermomParts;
     private Text text;
-    CameraScript cs;
+    private CameraScript cs;
 
     void Awake()
     {
         cs = GameObject.Find("Main Camera").GetComponent<CameraScript>();
-    }
-    void Start()
-    {
         text = GameObject.FindGameObjectsWithTag("GT")[0].GetComponent<Text>();
         thermomParts = GameObject.FindGameObjectsWithTag("ThermShell");
-
     }
+
     public void OnPointerEnter(PointerEventData eventData)
     {
         text.text = "Термометр. Используется для измерения температуры проводника.";
-        foreach (var part in thermomParts)
-        {
-            part.GetComponent<Renderer>().material.color = Color.green;
-        }
+        foreach (var part in thermomParts) part.GetComponent<Renderer>().material.color = Color.green;
     }
     public void OnPointerExit(PointerEventData eventData)
     {
         text.text = "";
-        foreach (var part in thermomParts)
-        {
-            part.GetComponent<Renderer>().material = material;
-        }
+        foreach (var part in thermomParts) part.GetComponent<Renderer>().material = material;
     }
 
     public void OnPointerClick(PointerEventData eventData)

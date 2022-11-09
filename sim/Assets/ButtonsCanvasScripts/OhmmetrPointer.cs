@@ -12,28 +12,19 @@ public class OhmmetrPointer : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     void Awake()
     {
         cs = GameObject.Find("Main Camera").GetComponent<CameraScript>();
-    }
-    void Start()
-    {
         text = GameObject.FindGameObjectsWithTag("GT")[0].GetComponent<Text>();
         ohmParts = GameObject.FindGameObjectsWithTag("OhmShell");
-
     }
+
     public void OnPointerEnter(PointerEventData eventData)
     {
         text.text = "Омметр. Используется для измерения сопротивления проводника.";
-        foreach (var part in ohmParts)
-        {
-            part.GetComponent<Renderer>().material.color = Color.green;
-        }
+        foreach (var part in ohmParts) part.GetComponent<Renderer>().material.color = Color.green;
     }
     public void OnPointerExit(PointerEventData eventData)
     {
         text.text = "";
-        foreach (var part in ohmParts)
-        {
-            part.GetComponent<Renderer>().material = material;
-        }
+        foreach (var part in ohmParts) part.GetComponent<Renderer>().material = material;
     }
     public void OnPointerClick(PointerEventData eventData)
     {
