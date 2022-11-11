@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 
 public class CameraScript: MonoBehaviour
 {
@@ -14,7 +13,7 @@ public class CameraScript: MonoBehaviour
 
     public static readonly Vector3 startPosition = new Vector3(startX, startY, startZ);
     public static readonly Quaternion startRotation = Quaternion.Euler(0, 0, 0);
-    private Vector3 currPos=startPosition, needPosition = startPosition;
+    private Vector3 currPos = startPosition, needPosition = startPosition;
     private Quaternion currRot = startRotation, needRotation = startRotation;
 
     //  ФУНКЦИЯ ОГРАНИЧЕНИЯ ПРЕДЕЛОВ ДВИЖЕНИЯ КАМЕРЫ
@@ -27,10 +26,14 @@ public class CameraScript: MonoBehaviour
         if (Input.GetMouseButton(1) && !Input.GetMouseButton(2))
         {
             transform.RotateAround(targetPos.position, Vector3.up, Input.GetAxis("Mouse X") * sensivity);
+            needPosition = transform.position;
+            needRotation = transform.rotation;
         }
         if (Input.GetMouseButton(2) && !Input.GetMouseButton(1))
         {
             transform.RotateAround(targetPos.position, Vector3.right, Input.GetAxis("Mouse Y") * sensivity);
+            needPosition = transform.position;
+            needRotation = transform.rotation;
         }
         // ДВИЖЕНИЯ КАМЕРЫ В СТОРОНЫ КЛАВИШАМИ
 
@@ -40,6 +43,8 @@ public class CameraScript: MonoBehaviour
         {
             Vector3 newpos = transform.position + (transform.TransformDirection(new Vector3(x, 0, 0)) + Vector3.forward * y) / sensivity;
             if (ControlDistance(Vector3.Distance(newpos, targetPos.position))) transform.position = newpos;
+            needPosition = transform.position;
+            needRotation = transform.rotation;
         }
 
         // ПРИБЛИЖЕНИЕ И УДАЛЕНИЕ КАМЕРЫ ОТ УСТАНОВКИ ПРОКРУТКОЙ КОЛЕСА МЫШИ
@@ -50,6 +55,8 @@ public class CameraScript: MonoBehaviour
             transform.position += transformDirection;
             if (transform.position.y < 13f) transform.position = new Vector3(transform.position.x, 13f, transform.position.z);
             if (transform.position.y > 16f) transform.position = new Vector3(transform.position.x, 16f, transform.position.z);
+            needPosition = transform.position;
+            needRotation = transform.rotation;
         }
         #endregion
         currPos = transform.position;
