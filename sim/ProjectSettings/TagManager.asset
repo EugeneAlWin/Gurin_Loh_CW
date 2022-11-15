@@ -10,6 +10,8 @@ TagManager:
   - RackShell
   - OhmShell
   - ThermShell
+  - InstButtons
+  - PractButtons
   layers:
   - Default
   - TransparentFX

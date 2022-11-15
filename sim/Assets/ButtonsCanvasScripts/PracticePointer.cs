@@ -1,15 +1,13 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class InstallationPointer : MonoBehaviour, IPointerClickHandler,IPointerEnterHandler, IPointerExitHandler
+public class PracticePointer : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    CameraScript cs;
     GameObject a;
 
     void Awake()
     {
-        cs = GameObject.Find("Main Camera").GetComponent<CameraScript>();
-        a = GameObject.Find("InstallationPanel");
+        a = GameObject.Find("PracticePanel");
     }
     void Start()
     {
@@ -17,12 +15,12 @@ public class InstallationPointer : MonoBehaviour, IPointerClickHandler,IPointerE
     }
     public void OnPointerClick(PointerEventData eventData)
     {
-        cs.SetNeedPosAndRot(CameraScript.startPosition, CameraScript.startRotation);
+        
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        a.SetActive(true);  
+        a.SetActive(true);
     }
 
     public void OnPointerExit(PointerEventData eventData)
