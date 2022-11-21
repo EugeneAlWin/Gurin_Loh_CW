@@ -4,13 +4,14 @@ using UnityEngine.UI;
 
 public class RackPointer : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
-    
+
     [SerializeField] private Material material;
     private GameObject[] rackParts;
     private Text text;
-    CameraScript cs;
+    private CameraScript cs;
+    private string prevText;
 
-    void Awake()
+    private void Awake()
     {
         cs = GameObject.Find("Main Camera").GetComponent<CameraScript>();
         text = GameObject.FindGameObjectsWithTag("GT")[0].GetComponent<Text>();
@@ -19,12 +20,13 @@ public class RackPointer : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        prevText = text.text;
         text.text = "Стойка. Используется для того, чтобы удерживать проводник.";
         foreach (var part in rackParts) part.GetComponent<Renderer>().material.color = Color.green;
     }
     public void OnPointerExit(PointerEventData eventData)
     {
-        text.text = "";
+        text.text = prevText;
         foreach (var part in rackParts) part.GetComponent<Renderer>().material = material;
     }
 

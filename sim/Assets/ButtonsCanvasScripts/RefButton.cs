@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class RefButton : MonoBehaviour, IPointerEnterHandler,IPointerExitHandler
+public class RefButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    GameObject RefImage;
-    void Awake()
+    private GameObject RefImage;
+
+    private void Awake()
     {
         RefImage = GameObject.Find("RefImage");
         RefImage.SetActive(false);

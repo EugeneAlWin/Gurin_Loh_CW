@@ -1,15 +1,15 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-
 public class ConductorsPointer : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     [SerializeField] private Material material;
     private GameObject[] condParts;
     private Text text;
-    CameraScript cs;
+    private CameraScript cs;
+    private string prevText;
 
-    void Awake()
+    private void Awake()
     {
         cs = GameObject.Find("Main Camera").GetComponent<CameraScript>();
         text = GameObject.FindGameObjectsWithTag("GT")[0].GetComponent<Text>();
@@ -18,12 +18,13 @@ public class ConductorsPointer : MonoBehaviour, IPointerEnterHandler, IPointerEx
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        prevText = text.text;
         text.text = "Проводники. Через них проходит ток. В данной установке их нужно нагреть и посмотреть на то, как меняется сопротивление.";
         foreach (var part in condParts) part.GetComponent<Renderer>().material.color = Color.green;
     }
     public void OnPointerExit(PointerEventData eventData)
     {
-        text.text = "";
+        text.text = prevText;
         foreach (var part in condParts) part.GetComponent<Renderer>().material = material;
     }
     public void OnPointerClick(PointerEventData eventData)

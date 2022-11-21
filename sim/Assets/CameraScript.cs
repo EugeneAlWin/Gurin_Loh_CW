@@ -1,15 +1,15 @@
 ﻿using UnityEngine;
 
-public class CameraScript: MonoBehaviour
+public class CameraScript : MonoBehaviour
 {
-    [SerializeField] float scrollSpeed = 10f;
-    [SerializeField] int sensivity = 3;
-    [SerializeField] Transform targetPos;
-    bool move = false;
+    [SerializeField] private float scrollSpeed = 10f;
+    [SerializeField] private int sensivity = 3;
+    [SerializeField] private Transform targetPos;
+    private bool move = false;
     private float offset = 0, timer = 0.0f;
-    readonly float speed = 0.001f, waitTime = 0.02f;
+    private readonly float speed = 0.001f, waitTime = 0.02f;
     private readonly int maxdistance = 20, mindistance = 1;
-    private static readonly float startX = 11.23f, startY= 14.87f, startZ = -188.87f;
+    private static readonly float startX = 11.23f, startY = 14.87f, startZ = -188.87f;
 
     public static readonly Vector3 startPosition = new Vector3(startX, startY, startZ);
     public static readonly Quaternion startRotation = Quaternion.Euler(0, 0, 0);
@@ -17,9 +17,9 @@ public class CameraScript: MonoBehaviour
     private Quaternion currRot = startRotation, needRotation = startRotation;
 
     //  ФУНКЦИЯ ОГРАНИЧЕНИЯ ПРЕДЕЛОВ ДВИЖЕНИЯ КАМЕРЫ
-    bool ControlDistance(float distance) => (distance > mindistance && distance < maxdistance);
-    
-    void Update()
+    private bool ControlDistance(float distance) => distance > mindistance && distance < maxdistance;
+
+    private void Update()
     {
         timer += Time.deltaTime;
         #region Movement
@@ -41,7 +41,7 @@ public class CameraScript: MonoBehaviour
         float y = Input.GetAxis("Vertical");
         if (x != 0 || y != 0)
         {
-            Vector3 newpos = transform.position + (transform.TransformDirection(new Vector3(x, 0, 0)) + Vector3.forward * y) / sensivity;
+            Vector3 newpos = transform.position + ((transform.TransformDirection(new Vector3(x, 0, 0)) + (Vector3.forward * y)) / sensivity);
             if (ControlDistance(Vector3.Distance(newpos, targetPos.position))) transform.position = newpos;
             needPosition = transform.position;
             needRotation = transform.rotation;
@@ -70,20 +70,20 @@ public class CameraScript: MonoBehaviour
 
     private void MoveToElement(Vector3 needPosition, Quaternion needRotation)
     {
-            if (move)
+        if (move)
+        {
+            offset += speed;
+            transform.SetPositionAndRotation
+            (
+                Vector3.Lerp(currPos, needPosition, offset),
+                Quaternion.Slerp(currRot, needRotation, offset)
+            );
+            if (offset >= 1)
             {
-                offset += speed;
-                transform.SetPositionAndRotation
-                (
-                    Vector3.Lerp(currPos, needPosition, offset),
-                    Quaternion.Slerp(currRot, needRotation, offset)
-                );
-                if (offset >= 1)
-                {
-                    move = false;
-                    offset = 0;
-                }
+                move = false;
+                offset = 0;
             }
+        }
     }
     public void SetNeedPosAndRot(Vector3 needPosition, Quaternion needRotation)
     {
