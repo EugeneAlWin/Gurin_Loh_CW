@@ -22,12 +22,12 @@ public class RackPointer : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     {
         prevText = text.text;
         text.text = "Стойка. Используется для того, чтобы удерживать проводник.";
-        foreach (var part in rackParts) part.GetComponent<Renderer>().material.color = Color.green;
+        foreach (GameObject part in rackParts) part.GetComponent<Renderer>().material.color = Color.green;
     }
     public void OnPointerExit(PointerEventData eventData)
     {
         text.text = prevText;
-        foreach (var part in rackParts) part.GetComponent<Renderer>().material = material;
+        foreach (GameObject part in rackParts) part.GetComponent<Renderer>().material = material;
     }
 
     public void OnPointerClick(PointerEventData eventData)

@@ -21,12 +21,12 @@ public class BurnerPointer : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     {
         prevText = text.text;
         text.text = "Горелка. Используется для нагревания проводника";
-        foreach (var part in burnerParts) part.GetComponent<Renderer>().material.color = Color.green;
+        foreach (GameObject part in burnerParts) part.GetComponent<Renderer>().material.color = Color.green;
     }
     public void OnPointerExit(PointerEventData eventData)
     {
         text.text = prevText;
-        foreach (var part in burnerParts) part.GetComponent<Renderer>().material = material;
+        foreach (GameObject part in burnerParts) part.GetComponent<Renderer>().material = material;
     }
     public void OnPointerClick(PointerEventData eventData)
     {

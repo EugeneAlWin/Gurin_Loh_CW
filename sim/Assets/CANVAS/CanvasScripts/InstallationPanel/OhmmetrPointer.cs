@@ -21,12 +21,12 @@ public class OhmmetrPointer : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     {
         prevText = text.text;
         text.text = "Омметр. Используется для измерения сопротивления проводника.";
-        foreach (var part in ohmParts) part.GetComponent<Renderer>().material.color = Color.green;
+        foreach (GameObject part in ohmParts) part.GetComponent<Renderer>().material.color = Color.green;
     }
     public void OnPointerExit(PointerEventData eventData)
     {
         text.text = prevText;
-        foreach (var part in ohmParts) part.GetComponent<Renderer>().material = material;
+        foreach (GameObject part in ohmParts) part.GetComponent<Renderer>().material = material;
     }
     public void OnPointerClick(PointerEventData eventData)
     {

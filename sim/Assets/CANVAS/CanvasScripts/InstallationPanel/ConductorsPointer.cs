@@ -20,12 +20,12 @@ public class ConductorsPointer : MonoBehaviour, IPointerEnterHandler, IPointerEx
     {
         prevText = text.text;
         text.text = "Проводники. Через них проходит ток. В данной установке их нужно нагреть и посмотреть на то, как меняется сопротивление.";
-        foreach (var part in condParts) part.GetComponent<Renderer>().material.color = Color.green;
+        foreach (GameObject part in condParts) part.GetComponent<Renderer>().material.color = Color.green;
     }
     public void OnPointerExit(PointerEventData eventData)
     {
         text.text = prevText;
-        foreach (var part in condParts) part.GetComponent<Renderer>().material = material;
+        foreach (GameObject part in condParts) part.GetComponent<Renderer>().material = material;
     }
     public void OnPointerClick(PointerEventData eventData)
     {

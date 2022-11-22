@@ -21,12 +21,12 @@ public class ThermometerPointer : MonoBehaviour, IPointerEnterHandler, IPointerE
     {
         prevText = text.text;
         text.text = "Термометр. Используется для измерения температуры проводника.";
-        foreach (var part in thermomParts) part.GetComponent<Renderer>().material.color = Color.green;
+        foreach (GameObject part in thermomParts) part.GetComponent<Renderer>().material.color = Color.green;
     }
     public void OnPointerExit(PointerEventData eventData)
     {
         text.text = prevText;
-        foreach (var part in thermomParts) part.GetComponent<Renderer>().material = material;
+        foreach (GameObject part in thermomParts) part.GetComponent<Renderer>().material = material;
     }
 
     public void OnPointerClick(PointerEventData eventData)
