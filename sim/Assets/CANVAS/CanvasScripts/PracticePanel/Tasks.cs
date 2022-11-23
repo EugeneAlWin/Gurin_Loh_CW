@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public partial class Tasks : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler
 {
     private GameObject practicePanel, groundPanel;
-    private Text text;
+    private Text text, groundTaskText;
     public enum States
     {
         Started,
@@ -19,6 +19,7 @@ public partial class Tasks : MonoBehaviour, IPointerClickHandler, IPointerEnterH
         text = GameObject.FindGameObjectsWithTag("GT")[0].GetComponent<Text>();
         practicePanel = GameObject.Find("PracticePanel");
         groundPanel = GameObject.Find("GroundTask");
+        groundTaskText = GameObject.Find("TaskText").GetComponent<Text>();
         groundPanel.SetActive(false);
     }
 

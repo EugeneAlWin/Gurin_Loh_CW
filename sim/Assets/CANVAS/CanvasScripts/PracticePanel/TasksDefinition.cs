@@ -2,13 +2,12 @@
 
 public partial class Tasks : MonoBehaviour
 {
-
     private void Task1()
     {
         switch (state)
         {
             case States.Started:
-                text.text = "Задание 1. Подключите проводник к источнику напряжения.";
+                groundTaskText.text = "Задание 1. Подключите проводник к источнику напряжения.";
                 state = States.Continue;
                 break;
             case States.Continue:
@@ -19,8 +18,6 @@ public partial class Tasks : MonoBehaviour
                 state = States.Started;
                 break;
         }
-
-        text.text = "Задание 1. Подключите провод к источнику напряжения и измерьте напряжение на проводе.";
     }
     private void Task2()
     {
