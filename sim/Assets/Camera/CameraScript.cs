@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
 
-public class CameraScript : MonoBehaviour
+public partial class CameraScript : MonoBehaviour
 {
     [SerializeField] private float scrollSpeed = 10f;
     [SerializeField] private int sensivity = 3;
     [SerializeField] private Transform targetPos;
     private bool move = false;
-    private float offset = 0, timer = 0.0f;
+    private float offset = 0.0f, timer = 0.0f;
     private readonly float speed = 0.001f, waitTime = 0.02f;
     private readonly int maxdistance = 20, mindistance = 1;
     private static readonly float startX = 11.23f, startY = 14.87f, startZ = -188.87f;
@@ -17,11 +17,12 @@ public class CameraScript : MonoBehaviour
     private Quaternion currRot = startRotation, needRotation = startRotation;
 
     //  ФУНКЦИЯ ОГРАНИЧЕНИЯ ПРЕДЕЛОВ ДВИЖЕНИЯ КАМЕРЫ
-    private bool ControlDistance(float distance) => distance > mindistance && distance < maxdistance;
-
     private void Update()
     {
         timer += Time.deltaTime;
+        float x = Input.GetAxis("Horizontal");
+        float y = Input.GetAxis("Vertical");
+        float mouseWheelVal = Input.GetAxis("Mouse ScrollWheel");
         #region Movement
         if (Input.GetMouseButton(1) && !Input.GetMouseButton(2))
         {
@@ -37,8 +38,6 @@ public class CameraScript : MonoBehaviour
         }
         // ДВИЖЕНИЯ КАМЕРЫ В СТОРОНЫ КЛАВИШАМИ
 
-        float x = Input.GetAxis("Horizontal");
-        float y = Input.GetAxis("Vertical");
         if (x != 0 || y != 0)
         {
             Vector3 newpos = transform.position + ((transform.TransformDirection(new Vector3(x, 0, 0)) + (Vector3.forward * y)) / sensivity);
@@ -48,48 +47,26 @@ public class CameraScript : MonoBehaviour
         }
 
         // ПРИБЛИЖЕНИЕ И УДАЛЕНИЕ КАМЕРЫ ОТ УСТАНОВКИ ПРОКРУТКОЙ КОЛЕСА МЫШИ
-        float mouseWheelVal = Input.GetAxis("Mouse ScrollWheel");
         if (mouseWheelVal != 0)
         {
             Vector3 transformDirection = transform.TransformDirection(mouseWheelVal * scrollSpeed * Vector3.up);
             transform.position += transformDirection;
+            
             if (transform.position.y < 13f) transform.position = new Vector3(transform.position.x, 13f, transform.position.z);
             if (transform.position.y > 16f) transform.position = new Vector3(transform.position.x, 16f, transform.position.z);
+            
             needPosition = transform.position;
             needRotation = transform.rotation;
         }
         #endregion
+        
         currPos = transform.position;
         currRot = transform.rotation;
+        
         if (timer > waitTime)
         {
             MoveToElement(needPosition, needRotation);
-            timer -= waitTime;
+            timer = 0.0f;
         }
-    }
-
-    private void MoveToElement(Vector3 needPosition, Quaternion needRotation)
-    {
-        if (move)
-        {
-            offset += speed;
-            transform.SetPositionAndRotation
-            (
-                Vector3.Lerp(currPos, needPosition, offset),
-                Quaternion.Slerp(currRot, needRotation, offset)
-            );
-            if (offset >= 1)
-            {
-                move = false;
-                offset = 0;
-            }
-        }
-    }
-    public void SetNeedPosAndRot(Vector3 needPosition, Quaternion needRotation)
-    {
-        if (currPos != transform.position && currRot != transform.rotation) return;
-        this.needPosition = needPosition;
-        this.needRotation = needRotation;
-        move = true;
     }
 }
