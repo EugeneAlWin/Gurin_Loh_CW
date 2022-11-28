@@ -1,19 +1,25 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 
 public class BurnerScript : MonoBehaviour
 {
     [SerializeField] private GameObject fire;
     private ParticleSystem ps;
+    private TextMeshPro thermVal;
+
     public enum BurnerState
     {
         Off,
         Middle,
         Full
     }
-    public BurnerState burnerState = BurnerState.Off;
+    public BurnerState currentState = BurnerState.Off;
     private void Awake()
     {
         ps = fire.GetComponent<ParticleSystem>();
+        thermVal = GameObject.Find("TempVal").GetComponent<TextMeshPro>();
+        thermVal.text = "273 °K";
+
     }
     void Update()
     {
@@ -25,22 +31,25 @@ public class BurnerScript : MonoBehaviour
                 {
                 if (hit.collider.gameObject.name == "BurnerHand")
                 {
-                    switch (burnerState)
+                    switch (currentState)
                     {
                         case BurnerState.Off:
-                            burnerState = BurnerState.Middle;
+                            currentState = BurnerState.Middle;
                             SetFireSize(2.0f);
                             SetRot(90.0f);
+                            thermVal.text = "293 °K";
                             break;
                         case BurnerState.Middle:
-                            burnerState = BurnerState.Full;
+                            currentState = BurnerState.Full;
                             SetFireSize(3.0f);
                             SetRot(90.0f);
+                            thermVal.text = "313 °K";
                             break;
                         case BurnerState.Full:
-                            burnerState = BurnerState.Off;
+                            currentState = BurnerState.Off;
                             SetFireSize(0);
                             SetRot(-180.0f);
+                            thermVal.text = "273 °K";
                             break;
                     }
                 }
