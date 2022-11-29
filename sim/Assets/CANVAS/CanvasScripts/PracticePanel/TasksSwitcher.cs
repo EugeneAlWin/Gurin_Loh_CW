@@ -22,6 +22,12 @@ public partial class Tasks : MonoBehaviour, IPointerClickHandler, IPointerEnterH
         FourteenthTask,
         FifteenthTask,
         SixteenthTask,
+        SeventeenthTask,
+        EighteenthTask,
+        NineteenthTask,
+        TwentiethTask,
+        TwentyFirstTask,
+        TwentySecondTask,
     }
 
     private void Update()
@@ -77,6 +83,24 @@ public partial class Tasks : MonoBehaviour, IPointerClickHandler, IPointerEnterH
                 break;
             case TasksNums.SixteenthTask:
                 Task16();
+                break;
+            case TasksNums.SeventeenthTask:
+                Task17();
+                break;
+            case TasksNums.EighteenthTask:
+                Task18();
+                break;
+            case TasksNums.NineteenthTask:
+                Task19();
+                break;
+            case TasksNums.TwentiethTask:
+                Task20();
+                break;
+            case TasksNums.TwentyFirstTask:
+                Task21();
+                break;
+            case TasksNums.TwentySecondTask:
+                Task22();
                 break;
         }
     }

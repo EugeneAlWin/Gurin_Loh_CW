@@ -18,7 +18,7 @@ public partial class Tasks : MonoBehaviour, IPointerClickHandler, IPointerEnterH
     public States state = States.Started;
     internal TasksNums currentTask = TasksNums.NULL;
 
-    private void Awake()
+    private void Start()
     {
         text = GameObject.FindGameObjectsWithTag("GT")[0].GetComponent<Text>();
         practicePanel = GameObject.Find("PracticePanel");

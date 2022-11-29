@@ -9,7 +9,7 @@ public class CondsAnim : MonoBehaviour
         Iron
 
     }
-    public Conductors currentConductor = Conductors.Lead;
+    public Conductors currentConductor;
     
     private Animator leadAnimation;
     private Animator aluminiumAnimation;
@@ -20,6 +20,7 @@ public class CondsAnim : MonoBehaviour
         leadAnimation = GameObject.Find("Conductor3").GetComponent<Animator>(); // Lead
         aluminiumAnimation = GameObject.Find("Conductor1").GetComponent<Animator>(); // Aluminum
         ironAnimation = GameObject.Find("Conductor2").GetComponent<Animator>(); // Iron
+        currentConductor = Conductors.Lead;
     }
 
     // Update is called once per frame
