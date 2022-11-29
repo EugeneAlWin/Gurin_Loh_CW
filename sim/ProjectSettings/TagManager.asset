@@ -12,6 +12,8 @@ TagManager:
   - ThermShell
   - InstButtons
   - PractButtons
+  - TEMPERATURE
+  - RESISTANCE
   layers:
   - Default
   - TransparentFX
