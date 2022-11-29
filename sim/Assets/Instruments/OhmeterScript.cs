@@ -46,7 +46,7 @@ public class OhmeterScript : MonoBehaviour
                         break;
                 }
                 break;
-            case CondsAnim.Conductors.Aluminum:
+            case CondsAnim.Conductors.Aluminium:
                 switch (burnerState.currentState)
                 {
                     case BurnerScript.BurnerState.Off:

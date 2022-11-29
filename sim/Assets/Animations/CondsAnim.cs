@@ -5,7 +5,7 @@ public class CondsAnim : MonoBehaviour
     public enum Conductors
     {
         Lead,
-        Aluminum,
+        Aluminium,
         Iron
 
     }
@@ -36,7 +36,7 @@ public class CondsAnim : MonoBehaviour
                     leadAnimation.SetInteger("ChosenCond", 1);
                     aluminiumAnimation.SetInteger("ChosenCond", 1);
                     ironAnimation.SetInteger("ChosenCond", 1);
-                    currentConductor = Conductors.Aluminum;
+                    currentConductor = Conductors.Aluminium;
                 }
                 if (hit.collider.gameObject.name == "Conductor2")
                 {

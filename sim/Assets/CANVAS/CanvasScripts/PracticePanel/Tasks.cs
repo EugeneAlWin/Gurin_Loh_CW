@@ -6,6 +6,9 @@ public partial class Tasks : MonoBehaviour, IPointerClickHandler, IPointerEnterH
 {
     private GameObject practicePanel, groundPanel;
     private Text text, groundTaskText;
+    private AddValueScript addValue;
+    private BurnerScript burner;
+    private CondsAnim condsAnimClass;
     public enum States
     {
         Started,
@@ -13,6 +16,7 @@ public partial class Tasks : MonoBehaviour, IPointerClickHandler, IPointerEnterH
         Completed,
     }
     public States state = States.Started;
+    internal TasksNums currentTask = TasksNums.NULL;
 
     private void Awake()
     {
@@ -20,7 +24,10 @@ public partial class Tasks : MonoBehaviour, IPointerClickHandler, IPointerEnterH
         practicePanel = GameObject.Find("PracticePanel");
         groundPanel = GameObject.Find("GroundTask");
         groundTaskText = GameObject.Find("TaskText").GetComponent<Text>();
-        groundPanel.SetActive(false);
+        addValue = GameObject.Find("Write").GetComponent<AddValueScript>();
+        burner = GameObject.Find("BurnerHand").GetComponent<BurnerScript>();
+        condsAnimClass = GameObject.Find("Conductors").GetComponent<CondsAnim>();
+        //groundPanel.SetActive(false);
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -31,7 +38,6 @@ public partial class Tasks : MonoBehaviour, IPointerClickHandler, IPointerEnterH
         }
     }
 
-    private TasksNums currentTask = TasksNums.NULL;
     public void OnPointerClick(PointerEventData eventData)
     {
         currentTask = TasksNums.FirstTask;

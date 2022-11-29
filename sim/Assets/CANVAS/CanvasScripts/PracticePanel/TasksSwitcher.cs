@@ -3,7 +3,7 @@ using UnityEngine.EventSystems;
 
 public partial class Tasks : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler
 {
-    private enum TasksNums
+    internal enum TasksNums
     {
         NULL,
         FirstTask,
