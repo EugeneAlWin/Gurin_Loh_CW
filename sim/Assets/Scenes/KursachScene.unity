@@ -11842,7 +11842,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 0,15
+  m_Text: 0,25
 --- !u!222 &1191040335
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -13510,7 +13510,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "T, \u041A"
+  m_Text: "T, \xB0C"
 --- !u!222 &1509878251
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -14452,7 +14452,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "R, \u041E\u043C"
+  m_Text: "R, \u043C\u043A\u041E\u043C"
 --- !u!222 &1706539347
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -15411,7 +15411,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 0,04
+  m_Text: 314
 --- !u!222 &1917528549
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -15567,7 +15567,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "S, \u043C^2 "
+  m_Text: "S, \u043C\u043C^2 "
 --- !u!222 &1964869088
 CanvasRenderer:
   m_ObjectHideFlags: 0
