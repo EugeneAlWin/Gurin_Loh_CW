@@ -8,7 +8,6 @@ public class ThermometerPointer : MonoBehaviour, IPointerEnterHandler, IPointerE
     private GameObject[] thermomParts;
     private Text text;
     private CameraScript cs;
-    private string prevText;
 
     private void Awake()
     {
@@ -19,13 +18,12 @@ public class ThermometerPointer : MonoBehaviour, IPointerEnterHandler, IPointerE
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        prevText = text.text;
         text.text = "Термометр. Используется для измерения температуры проводника.";
         foreach (GameObject part in thermomParts) part.GetComponent<Renderer>().material.color = Color.green;
     }
     public void OnPointerExit(PointerEventData eventData)
     {
-        text.text = prevText;
+        text.text = "";
         foreach (GameObject part in thermomParts) part.GetComponent<Renderer>().material = material;
     }
 

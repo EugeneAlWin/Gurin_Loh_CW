@@ -8,7 +8,6 @@ public class BurnerPointer : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     private GameObject[] burnerParts;
     private Text text;
     private CameraScript cs;
-    private string prevText;
 
     private void Awake()
     {
@@ -19,13 +18,12 @@ public class BurnerPointer : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        prevText = text.text;
         text.text = "Горелка. Используется для нагревания проводника";
         foreach (GameObject part in burnerParts) part.GetComponent<Renderer>().material.color = Color.green;
     }
     public void OnPointerExit(PointerEventData eventData)
     {
-        text.text = prevText;
+        text.text = "";
         foreach (GameObject part in burnerParts) part.GetComponent<Renderer>().material = material;
     }
     public void OnPointerClick(PointerEventData eventData)

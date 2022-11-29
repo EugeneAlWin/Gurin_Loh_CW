@@ -8,7 +8,6 @@ public class OhmmetrPointer : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     private GameObject[] ohmParts;
     private Text text;
     private CameraScript cs;
-    private string prevText;
 
     private void Awake()
     {
@@ -19,13 +18,12 @@ public class OhmmetrPointer : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        prevText = text.text;
         text.text = "Омметр. Используется для измерения сопротивления проводника.";
         foreach (GameObject part in ohmParts) part.GetComponent<Renderer>().material.color = Color.green;
     }
     public void OnPointerExit(PointerEventData eventData)
     {
-        text.text = prevText;
+        text.text = "";
         foreach (GameObject part in ohmParts) part.GetComponent<Renderer>().material = material;
     }
     public void OnPointerClick(PointerEventData eventData)

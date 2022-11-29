@@ -9,7 +9,6 @@ public class RackPointer : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     private GameObject[] rackParts;
     private Text text;
     private CameraScript cs;
-    private string prevText;
 
     private void Awake()
     {
@@ -20,13 +19,12 @@ public class RackPointer : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        prevText = text.text;
         text.text = "Стойка. Используется для того, чтобы удерживать проводник.";
         foreach (GameObject part in rackParts) part.GetComponent<Renderer>().material.color = Color.green;
     }
     public void OnPointerExit(PointerEventData eventData)
     {
-        text.text = prevText;
+        text.text = "";
         foreach (GameObject part in rackParts) part.GetComponent<Renderer>().material = material;
     }
 
