@@ -14,6 +14,8 @@ public partial class Tasks : MonoBehaviour
             case States.Continue:
                 if (addValue.isAddButtonClicked)
                 {
+                    table.temps[0].text = inputField.text;
+                    inputField.text = "";
                     state = States.Completed;
                     addValue.isAddButtonClicked = false;
                 }
@@ -36,6 +38,8 @@ public partial class Tasks : MonoBehaviour
                 if (addValue.isAddButtonClicked)
                 {
                     state = States.Completed;
+                    table.resists[0].text = inputField.text;
+                    inputField.text = "";
                 }
                 break;
             case States.Completed:
@@ -76,6 +80,8 @@ public partial class Tasks : MonoBehaviour
             case States.Continue:
                 if (addValue.isAddButtonClicked)
                 {
+                    table.temps[1].text = inputField.text;
+                    inputField.text = "";
                     state = States.Completed;
                     addValue.isAddButtonClicked = false;
                 }
@@ -98,6 +104,8 @@ public partial class Tasks : MonoBehaviour
                 if (addValue.isAddButtonClicked)
                 {
                     state = States.Completed;
+                    table.resists[1].text = inputField.text;
+                    inputField.text = "";
                 }
                 break;
             case States.Completed:
@@ -119,6 +127,8 @@ public partial class Tasks : MonoBehaviour
             case States.Continue:
                 if (burner.currentState == BurnerScript.BurnerState.Full && addValue.isAddButtonClicked)
                 {
+                    table.temps[2].text = inputField.text;
+                    inputField.text = "";
                     state = States.Completed;
                     addValue.isAddButtonClicked = false;
                 }
@@ -142,6 +152,8 @@ public partial class Tasks : MonoBehaviour
                 {
                     state = States.Completed;
                     addValue.isAddButtonClicked = false;
+                    table.resists[2].text = inputField.text;
+                    inputField.text = "";
                 }
                 break;
             case States.Completed:
@@ -183,6 +195,8 @@ public partial class Tasks : MonoBehaviour
             case States.Continue:
                 if (addValue.isAddButtonClicked)
                 {
+                    table.temps[3].text = inputField.text;
+                    inputField.text = "";
                     state = States.Completed;
                     addValue.isAddButtonClicked = false;
                 }
@@ -205,6 +219,8 @@ public partial class Tasks : MonoBehaviour
                 if (addValue.isAddButtonClicked)
                 {
                     state = States.Completed;
+                    table.resists[3].text = inputField.text;
+                    inputField.text = "";
                 }
                 break;
             case States.Completed:
@@ -225,6 +241,8 @@ public partial class Tasks : MonoBehaviour
             case States.Continue:
                 if (burner.currentState == BurnerScript.BurnerState.Middle && addValue.isAddButtonClicked)
                 {
+                    table.temps[4].text = inputField.text;
+                    inputField.text = "";
                     state = States.Completed;
                     addValue.isAddButtonClicked = false;
                 }
@@ -248,6 +266,8 @@ public partial class Tasks : MonoBehaviour
                 {
                     state = States.Completed;
                     addValue.isAddButtonClicked = false;
+                    table.resists[4].text = inputField.text;
+                    inputField.text = "";
                 }
                 break;
             case States.Completed:
@@ -268,6 +288,8 @@ public partial class Tasks : MonoBehaviour
             case States.Continue:
                 if (burner.currentState == BurnerScript.BurnerState.Full && addValue.isAddButtonClicked)
                 {
+                    table.temps[5].text = inputField.text;
+                    inputField.text = "";
                     state = States.Completed;
                     addValue.isAddButtonClicked = false;
                 }
@@ -291,6 +313,8 @@ public partial class Tasks : MonoBehaviour
                 {
                     state = States.Completed;
                     addValue.isAddButtonClicked = false;
+                    table.resists[5].text = inputField.text;
+                    inputField.text = "";
                 }
                 break;
             case States.Completed:
@@ -332,6 +356,8 @@ public partial class Tasks : MonoBehaviour
             case States.Continue:
                 if (addValue.isAddButtonClicked)
                 {
+                    table.temps[6].text = inputField.text;
+                    inputField.text = "";
                     state = States.Completed;
                     addValue.isAddButtonClicked = false;
                 }
@@ -354,6 +380,8 @@ public partial class Tasks : MonoBehaviour
                 if (addValue.isAddButtonClicked)
                 {
                     state = States.Completed;
+                    table.resists[6].text = inputField.text;
+                    inputField.text = "";
                 }
                 break;
             case States.Completed:
@@ -374,6 +402,8 @@ public partial class Tasks : MonoBehaviour
             case States.Continue:
                 if (burner.currentState == BurnerScript.BurnerState.Middle && addValue.isAddButtonClicked)
                 {
+                    table.temps[7].text = inputField.text;
+                    inputField.text = "";
                     state = States.Completed;
                     addValue.isAddButtonClicked = false;
                 }
@@ -397,6 +427,8 @@ public partial class Tasks : MonoBehaviour
                 {
                     state = States.Completed;
                     addValue.isAddButtonClicked = false;
+                    table.resists[7].text = inputField.text;
+                    inputField.text = "";
                 }
                 break;
             case States.Completed:
@@ -417,6 +449,8 @@ public partial class Tasks : MonoBehaviour
             case States.Continue:
                 if (burner.currentState == BurnerScript.BurnerState.Full && addValue.isAddButtonClicked)
                 {
+                    table.temps[8].text = inputField.text;
+                    inputField.text = "";
                     state = States.Completed;
                     addValue.isAddButtonClicked = false;
                 }
@@ -440,6 +474,8 @@ public partial class Tasks : MonoBehaviour
                 {
                     state = States.Completed;
                     addValue.isAddButtonClicked = false;
+                    table.resists[8].text = inputField.text;
+                    inputField.text = "";
                 }
                 break;
             case States.Completed:
@@ -464,6 +500,7 @@ public partial class Tasks : MonoBehaviour
                 }
                 break;
             case States.Completed:
+                table.table.SetActive(true);
                 state = States.Started;
                 currentTask = TasksNums.NULL;
                 break;

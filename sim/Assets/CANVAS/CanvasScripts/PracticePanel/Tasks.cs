@@ -9,6 +9,8 @@ public partial class Tasks : MonoBehaviour, IPointerClickHandler, IPointerEnterH
     private AddValueScript addValue;
     private BurnerScript burner;
     private CondsAnim condsAnimClass;
+    private InputField inputField;
+    private TableScript table;
     public enum States
     {
         Started,
@@ -27,6 +29,8 @@ public partial class Tasks : MonoBehaviour, IPointerClickHandler, IPointerEnterH
         addValue = GameObject.Find("Write").GetComponent<AddValueScript>();
         burner = GameObject.Find("BurnerHand").GetComponent<BurnerScript>();
         condsAnimClass = GameObject.Find("Conductors").GetComponent<CondsAnim>();
+        inputField = GameObject.Find("InputField").GetComponent<InputField>();
+        table = GameObject.Find("Table").GetComponent<TableScript>();
         //groundPanel.SetActive(false);
     }
 
