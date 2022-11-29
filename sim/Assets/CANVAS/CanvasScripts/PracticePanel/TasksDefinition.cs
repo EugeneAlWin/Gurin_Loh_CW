@@ -502,7 +502,7 @@ public partial class Tasks : MonoBehaviour
             case States.Completed:
                 table.table.SetActive(true);
                 groundPanel.GetComponent<GroundPanel>().mustToBeClosed = false;
-                groundTaskText.text = "Опыт завершен!";
+                groundTaskText.text = "Опыт завершен! Нажмите на мусорку, чтобы очистить таблицу.";
                 state = States.Started;
                 currentTask = TasksNums.NULL;
                 break;
