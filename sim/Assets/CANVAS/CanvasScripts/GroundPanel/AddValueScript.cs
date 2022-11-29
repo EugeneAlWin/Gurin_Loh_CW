@@ -6,7 +6,7 @@ public class AddValueScript : MonoBehaviour, IPointerClickHandler
     public bool isAddButtonClicked = false;
     public Tasks tasks;
 
-    void Awake()
+    private void Awake()
     {
         tasks = GameObject.Find("Practice").GetComponent<Tasks>();
     }

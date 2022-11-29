@@ -15,7 +15,7 @@ public class ShowTableOnHover : MonoBehaviour, IPointerEnterHandler, IPointerExi
         table.SetActive(false);
     }
 
-    void Start()
+    private void Start()
     {
         table = GameObject.Find("Table");
     }

@@ -13,7 +13,7 @@ public class BurnerScript : MonoBehaviour
         Middle = 50,
         Full = 100
     }
-    public BurnerState currentState, prevState; 
+    public BurnerState currentState, prevState;
     private void Awake()
     {
         ps = fire.GetComponent<ParticleSystem>();
@@ -21,14 +21,15 @@ public class BurnerScript : MonoBehaviour
         currentState = BurnerState.Off;
 
     }
-    void Update()
+
+    private void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            
+
             if (Physics.Raycast(ray, out RaycastHit hit))
-                {
+            {
                 if (hit.collider.gameObject.name == "BurnerHand")
                 {
                     switch (currentState)
@@ -73,7 +74,7 @@ public class BurnerScript : MonoBehaviour
     }
     private void SetFireSize(float size)
     {
-        var fireSize = ps.main;
+        ParticleSystem.MainModule fireSize = ps.main;
         fireSize.startSize = size;
     }
     private void SetRot(float Zrot)

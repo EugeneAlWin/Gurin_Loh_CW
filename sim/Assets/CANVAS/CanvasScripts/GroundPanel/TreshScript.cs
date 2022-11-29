@@ -9,7 +9,7 @@ public class TreshScript : MonoBehaviour, IPointerClickHandler
     private GroundPanel groundPanel;
     private Tasks tasks;
 
-    void Start()
+    private void Start()
     {
         table = GameObject.Find("Table");
         tableCellsT = GameObject.FindGameObjectsWithTag("TEMPERATURE");

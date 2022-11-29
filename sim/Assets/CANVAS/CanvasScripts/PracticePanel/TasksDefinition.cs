@@ -172,7 +172,7 @@ public partial class Tasks : MonoBehaviour
                 state = States.Continue;
                 break;
             case States.Continue:
-                if (burner.currentState == BurnerScript.BurnerState.Off && condsAnimClass.currentConductor == CondsAnim.Conductors.Aluminium )
+                if (burner.currentState == BurnerScript.BurnerState.Off && condsAnimClass.currentConductor == CondsAnim.Conductors.Aluminium)
                 {
                     state = States.Completed;
                     addValue.isAddButtonClicked = false;

@@ -51,18 +51,18 @@ public partial class CameraScript : MonoBehaviour
         {
             Vector3 transformDirection = transform.TransformDirection(mouseWheelVal * scrollSpeed * Vector3.up);
             transform.position += transformDirection;
-            
+
             if (transform.position.y < 13f) transform.position = new Vector3(transform.position.x, 13f, transform.position.z);
             if (transform.position.y > 16f) transform.position = new Vector3(transform.position.x, 16f, transform.position.z);
-            
+
             needPosition = transform.position;
             needRotation = transform.rotation;
         }
         #endregion
-        
+
         currPos = transform.position;
         currRot = transform.rotation;
-        
+
         if (timer > waitTime)
         {
             MoveToElement(needPosition, needRotation);

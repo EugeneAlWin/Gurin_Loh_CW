@@ -6,7 +6,8 @@ public class TableScript : MonoBehaviour
     internal GameObject table;
     private GameObject[] tableCellsT, TableCellsR;
     internal Text[] temps, resists;
-    void Start()
+
+    private void Start()
     {
         table = GameObject.Find("Table");
         tableCellsT = GameObject.FindGameObjectsWithTag("TEMPERATURE");

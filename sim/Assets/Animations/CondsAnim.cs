@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 
 public class CondsAnim : MonoBehaviour
 {
@@ -15,7 +14,8 @@ public class CondsAnim : MonoBehaviour
     private Animator leadAnimation;
     private Animator aluminiumAnimation;
     private Animator ironAnimation;
-    void Start()
+
+    private void Start()
     {
         leadAnimation = GameObject.Find("Conductor3").GetComponent<Animator>(); // Lead
         aluminiumAnimation = GameObject.Find("Conductor1").GetComponent<Animator>(); // Aluminum
@@ -24,8 +24,8 @@ public class CondsAnim : MonoBehaviour
         currentConductor = Conductors.Lead;
         groundPanel.selectedCondText.text = "Свинец";
     }
-    
-    void Update()
+
+    private void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
