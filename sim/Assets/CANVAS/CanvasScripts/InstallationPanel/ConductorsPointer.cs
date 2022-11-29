@@ -3,8 +3,8 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 public class ConductorsPointer : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
-    [SerializeField] private Material material;
-    private GameObject[] condParts;
+    private Material leadCond, aluminiumCond, ironCond;
+    public Material leadMaterial, aluminiumMaterial, ironMaterial;
     private Text text;
     private CameraScript cs;
 
@@ -12,18 +12,28 @@ public class ConductorsPointer : MonoBehaviour, IPointerEnterHandler, IPointerEx
     {
         cs = GameObject.Find("Main Camera").GetComponent<CameraScript>();
         text = GameObject.FindGameObjectsWithTag("GT")[0].GetComponent<Text>();
-        condParts = GameObject.FindGameObjectsWithTag("CondShell");
+        leadCond = GameObject.Find("Conductor3").GetComponent<Renderer>().material;
+        aluminiumCond = GameObject.Find("Conductor2").GetComponent<Renderer>().material;
+        ironCond = GameObject.Find("Conductor1").GetComponent<Renderer>().material;
+        leadCond.color = Color.white;
+        aluminiumCond.color = Color.white;
+        ironCond.color = Color.white;
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
         text.text = "Проводники. Через них проходит ток. В данной установке их нужно нагреть и посмотреть на то, как меняется сопротивление.";
-        foreach (GameObject part in condParts) part.GetComponent<Renderer>().material.color = Color.green;
+        leadCond.color = Color.green;
+        aluminiumCond.color = Color.green;
+        ironCond.color = Color.green;
     }
     public void OnPointerExit(PointerEventData eventData)
     {
+        // unset color
+        leadCond.color = Color.white;
+        aluminiumCond.color = Color.white;
+        ironCond.color = Color.white;
         text.text = "";
-        foreach (GameObject part in condParts) part.GetComponent<Renderer>().material = material;
     }
     public void OnPointerClick(PointerEventData eventData)
     {

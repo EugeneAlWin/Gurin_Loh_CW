@@ -25,7 +25,7 @@ public class RackPointer : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     public void OnPointerExit(PointerEventData eventData)
     {
         text.text = "";
-        foreach (GameObject part in rackParts) part.GetComponent<Renderer>().material = material;
+        foreach (GameObject part in rackParts) part.GetComponent<Renderer>().material.color = Color.white;
     }
 
     public void OnPointerClick(PointerEventData eventData)
