@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class CondsAnim : MonoBehaviour
 {
@@ -14,16 +15,17 @@ public class CondsAnim : MonoBehaviour
     private Animator leadAnimation;
     private Animator aluminiumAnimation;
     private Animator ironAnimation;
+    private Text selectedCondText;
     void Start()
     {
-
         leadAnimation = GameObject.Find("Conductor3").GetComponent<Animator>(); // Lead
         aluminiumAnimation = GameObject.Find("Conductor1").GetComponent<Animator>(); // Aluminum
         ironAnimation = GameObject.Find("Conductor2").GetComponent<Animator>(); // Iron
+        selectedCondText = GameObject.Find("SelectedCond").GetComponent<Text>();
         currentConductor = Conductors.Lead;
+        selectedCondText.text = "Свинец";
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -38,6 +40,7 @@ public class CondsAnim : MonoBehaviour
                     aluminiumAnimation.SetInteger("ChosenCond", 1);
                     ironAnimation.SetInteger("ChosenCond", 1);
                     currentConductor = Conductors.Aluminium;
+                    selectedCondText.text = "Алюминий";
                 }
                 if (hit.collider.gameObject.name == "Conductor2")
                 {
@@ -45,6 +48,7 @@ public class CondsAnim : MonoBehaviour
                     aluminiumAnimation.SetInteger("ChosenCond", 2);
                     ironAnimation.SetInteger("ChosenCond", 2);
                     currentConductor = Conductors.Iron;
+                    selectedCondText.text = "Железо";
                 }
                 if (hit.collider.gameObject.name == "Conductor3")
                 {
@@ -52,6 +56,7 @@ public class CondsAnim : MonoBehaviour
                     aluminiumAnimation.SetInteger("ChosenCond", 3);
                     ironAnimation.SetInteger("ChosenCond", 3);
                     currentConductor = Conductors.Lead;
+                    selectedCondText.text = "Свинец";
                 }
             }
         }
