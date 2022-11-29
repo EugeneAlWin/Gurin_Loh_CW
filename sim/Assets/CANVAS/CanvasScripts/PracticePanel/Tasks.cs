@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public partial class Tasks : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler
 {
     private GameObject practicePanel, groundPanel;
-    private Text text, groundTaskText;
+    private Text groundTaskText;
     private AddValueScript addValue;
     private BurnerScript burner;
     private CondsAnim condsAnimClass;
@@ -22,7 +22,6 @@ public partial class Tasks : MonoBehaviour, IPointerClickHandler, IPointerEnterH
 
     private void Start()
     {
-        text = GameObject.FindGameObjectsWithTag("GT")[0].GetComponent<Text>();
         practicePanel = GameObject.Find("PracticePanel");
         groundPanel = GameObject.Find("GroundTask");
         groundTaskText = GameObject.Find("TaskText").GetComponent<Text>();
@@ -31,7 +30,6 @@ public partial class Tasks : MonoBehaviour, IPointerClickHandler, IPointerEnterH
         condsAnimClass = GameObject.Find("Conductors").GetComponent<CondsAnim>();
         inputField = GameObject.Find("InputField").GetComponent<InputField>();
         table = GameObject.Find("Table").GetComponent<TableScript>();
-        //groundPanel.SetActive(false);
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -45,5 +43,6 @@ public partial class Tasks : MonoBehaviour, IPointerClickHandler, IPointerEnterH
     public void OnPointerClick(PointerEventData eventData)
     {
         currentTask = TasksNums.FirstTask;
+        groundPanel.SetActive(true);
     }
 }

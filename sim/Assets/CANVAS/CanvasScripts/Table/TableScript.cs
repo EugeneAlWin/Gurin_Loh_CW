@@ -18,6 +18,6 @@ public class TableScript : MonoBehaviour
             temps[i] = tableCellsT[i].GetComponent<Text>();
             resists[i] = TableCellsR[i].GetComponent<Text>();
         }
-        table.SetActive(true);
+        table.SetActive(false);
     }
 }

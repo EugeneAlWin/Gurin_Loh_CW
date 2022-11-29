@@ -35,6 +35,10 @@ public partial class Tasks : MonoBehaviour, IPointerClickHandler, IPointerEnterH
         switch (currentTask)
         {
             case TasksNums.NULL:
+                if (groundPanel.GetComponent<GroundPanel>().mustToBeClosed)
+                {
+                    groundPanel.SetActive(false);
+                }
                 break;
             case TasksNums.FirstTask:
                 Task1();

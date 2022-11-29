@@ -11,19 +11,18 @@ public class CondsAnim : MonoBehaviour
 
     }
     public Conductors currentConductor;
-    
+    private GroundPanel groundPanel;
     private Animator leadAnimation;
     private Animator aluminiumAnimation;
     private Animator ironAnimation;
-    private Text selectedCondText;
     void Start()
     {
         leadAnimation = GameObject.Find("Conductor3").GetComponent<Animator>(); // Lead
         aluminiumAnimation = GameObject.Find("Conductor1").GetComponent<Animator>(); // Aluminum
         ironAnimation = GameObject.Find("Conductor2").GetComponent<Animator>(); // Iron
-        selectedCondText = GameObject.Find("SelectedCond").GetComponent<Text>();
+        groundPanel = GameObject.Find("GroundTask").GetComponent<GroundPanel>();
         currentConductor = Conductors.Lead;
-        selectedCondText.text = "Свинец";
+        groundPanel.selectedCondText.text = "Свинец";
     }
     
     void Update()
@@ -40,7 +39,7 @@ public class CondsAnim : MonoBehaviour
                     aluminiumAnimation.SetInteger("ChosenCond", 1);
                     ironAnimation.SetInteger("ChosenCond", 1);
                     currentConductor = Conductors.Aluminium;
-                    selectedCondText.text = "Алюминий";
+                    groundPanel.selectedCondText.text = "Алюминий";
                 }
                 if (hit.collider.gameObject.name == "Conductor2")
                 {
@@ -48,7 +47,7 @@ public class CondsAnim : MonoBehaviour
                     aluminiumAnimation.SetInteger("ChosenCond", 2);
                     ironAnimation.SetInteger("ChosenCond", 2);
                     currentConductor = Conductors.Iron;
-                    selectedCondText.text = "Железо";
+                    groundPanel.selectedCondText.text = "Железо";
                 }
                 if (hit.collider.gameObject.name == "Conductor3")
                 {
@@ -56,7 +55,7 @@ public class CondsAnim : MonoBehaviour
                     aluminiumAnimation.SetInteger("ChosenCond", 3);
                     ironAnimation.SetInteger("ChosenCond", 3);
                     currentConductor = Conductors.Lead;
-                    selectedCondText.text = "Свинец";
+                    groundPanel.selectedCondText.text = "Свинец";
                 }
             }
         }
