@@ -8,7 +8,7 @@ public partial class Tasks : MonoBehaviour
         switch (state)
         {
             case States.Started:
-                groundTaskText.text = "Задание 1. Запишите в таблицу температуру проводника.";
+                groundTaskText.text = "Задание 1. Запишите в таблицу температуру проводника (свинец).";
                 state = States.Continue;
                 break;
             case States.Continue:
