@@ -1,0 +1,32 @@
+@import 'variables';
+
+#nav {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: $nav-height;
+  width: 100%;
+  background-color: #1f2328;
+  z-index: 1;
+}
+#nav__ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .nav__li {
+    transition: all 0.7s ease;
+    font-size: 16pt;
+    text-align: center;
+    padding: 0 3%;
+    &:hover {
+      transform: scale(1.2);
+    }
+    a {
+      color: white;
+      &:hover {
+        color: rgb(78, 211, 78) !important;
+      }
+    }
+  }
+}
