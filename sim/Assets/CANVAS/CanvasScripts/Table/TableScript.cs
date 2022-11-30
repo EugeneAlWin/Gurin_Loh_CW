@@ -6,10 +6,12 @@ public class TableScript : MonoBehaviour
     internal GameObject table;
     private GameObject[] tableCellsT, TableCellsR;
     internal Text[] temps, resists;
-
+    private ShowTableOnHover showTableOnHover;
     private void Start()
     {
+        showTableOnHover = GameObject.Find("ShowTable").GetComponent<ShowTableOnHover>();
         table = GameObject.Find("Table");
+        showTableOnHover.table = table;
         tableCellsT = GameObject.FindGameObjectsWithTag("TEMPERATURE");
         TableCellsR = GameObject.FindGameObjectsWithTag("RESISTANCE");
         temps = new Text[tableCellsT.Length];
