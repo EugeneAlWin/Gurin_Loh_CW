@@ -7,7 +7,7 @@ public class OhmeterScript : MonoBehaviour
     private CondsAnim condsAnimClass;
     private BurnerScript burnerState;
     private TextMeshPro ohmmeterVal;
-    private readonly float TRCOfLead = 3.7f, TRCOfAluminium = 4.2f, TRCOfIron = 6.0f,
+    private readonly float TRCOfLead = 3.7e-3f, TRCOfAluminium = 4.2e-3f, TRCOfIron = 6.0e-3f,
         SRLead = 2.05e-7f, SRAluminium = 2.71e-8f, SRIron = 9.8e-8f,
         length = 0.25f, square = 314.0f;
     private float R1, R2, R3;
