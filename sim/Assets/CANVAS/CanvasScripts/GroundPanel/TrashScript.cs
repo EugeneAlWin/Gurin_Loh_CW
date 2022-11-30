@@ -2,14 +2,14 @@
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class TreshScript : MonoBehaviour, IPointerClickHandler
+public class TrashScript : MonoBehaviour, IPointerClickHandler
 {
     internal GameObject table;
     private GameObject[] tableCellsT, TableCellsR;
     private GroundPanel groundPanel;
     private Tasks tasks;
 
-    private void Start()
+    private void Awake()
     {
         table = GameObject.Find("Table");
         tableCellsT = GameObject.FindGameObjectsWithTag("TEMPERATURE");
