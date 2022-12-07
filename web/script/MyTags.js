@@ -1,7 +1,6 @@
 class NextButton extends HTMLElement {
   connectedCallback() {
     this.addEventListener('click', () => {
-      window.console.log('КУ');
       window.location.href = this.getAttribute('to') || '';
     });
   }
