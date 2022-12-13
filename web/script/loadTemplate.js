@@ -1,3 +1,5 @@
+import { getAnswer } from './knowledgeBase.js';
+
 document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('head').innerHTML += `
    <meta charset="UTF-8" />
@@ -19,6 +21,8 @@ document.addEventListener('DOMContentLoaded', () => {
         <li class="nav__li"><a href="./contacts.html">Контакты</a></li>
       </ul>
       `;
+
+  getAnswer('Что такое алюминий');
 });
 if (document.getElementById('full-image')) {
   document.getElementById('full-image').addEventListener('click', (e) => {
