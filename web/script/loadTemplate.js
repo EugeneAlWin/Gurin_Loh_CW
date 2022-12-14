@@ -26,12 +26,15 @@ document.addEventListener('DOMContentLoaded', () => {
     "<div class='label' onclick='toggleDialog()'>Задайте вопрос!</div>" +
     "<div class='header'>История:</div>" +
     "<div class='history' id='history'></div>" +
-    '<div class="question"  ><input id="Qdialog" style=" color:black !important;" placeholder="Введите вопрос"  onKeyDown="if(event.keyCode==13)ask(&quot;Qdialog&quot;)"/><br>' +
+    '<div class="question"  ><input id="Qdialog" style=" color:black !important;" placeholder="Введите вопрос"  /><br>' +
     '<button id="bts" style=" color:black !important;">Получить ответ</button>';
   '</div>' + '</div>' + getAnswer('Что такое алюминий');
   document
     .getElementById('bts')
     .addEventListener('click', () => ask('Qdialog'));
+  addEventListener('keydown', (e) => {
+    if (e.key == 'Enter') ask('Qdialog');
+  });
 });
 function ask(questionInput) {
   var question = document.getElementById(questionInput).value.trim();

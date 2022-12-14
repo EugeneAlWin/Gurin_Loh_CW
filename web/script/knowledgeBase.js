@@ -73,5 +73,5 @@ export function getAnswer(question) {
     }
   }
   if (!result) answer = 'Ответ не найден. <br/>';
-  console.log(answer);
+  console.log(answer.split('\n')[0]);
 }
