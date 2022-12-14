@@ -26,8 +26,8 @@ document.addEventListener('DOMContentLoaded', () => {
     "<div class='label' onclick='toggleDialog()'>Задайте вопрос!</div>" +
     "<div class='header'>История:</div>" +
     "<div class='history' id='history'></div>" +
-    "<div class='question'  ><input id='Qdialog' placeholder='Введите вопрос'  onKeyDown='if(event.keyCode==13)ask(&quot;Qdialog&quot;)'/><br>" +
-    '<button id="bts">Получить ответ</button>';
+    '<div class="question"  ><input id="Qdialog" style=" color:black !important;" placeholder="Введите вопрос"  onKeyDown="if(event.keyCode==13)ask(&quot;Qdialog&quot;)"/><br>' +
+    '<button id="bts" style=" color:black !important;">Получить ответ</button>';
   '</div>' + '</div>' + getAnswer('Что такое алюминий');
   document
     .getElementById('bts')
