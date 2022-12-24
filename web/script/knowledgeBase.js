@@ -3,6 +3,7 @@ import { endings } from './data/endings.js';
 import { blacklist } from './data/blacklist.js';
 
 function getEndingPosition(word) {
+  console.log(knowledge.length);
   if (blacklist.indexOf(word) !== -1) return -1;
   endings.forEach((item, j) => {
     if (word.substring(word.length - item[0].length) == item[0]) return j;
@@ -73,5 +74,5 @@ export function getAnswer(question) {
     }
   }
   if (!result) answer = 'Ответ не найден. <br/>';
-  console.log(answer.split('\n')[0]);
+  return answer.split('\n')[0];
 }

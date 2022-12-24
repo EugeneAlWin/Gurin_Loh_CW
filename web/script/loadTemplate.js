@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
     "<div class='history' id='history'></div>" +
     '<div class="question"  ><input id="Qdialog" style=" color:black !important;" placeholder="Введите вопрос"  /><br>' +
     '<button id="bts" style=" color:black !important;">Получить ответ</button>';
-  '</div>' + '</div>' + getAnswer('Что такое алюминий');
+  '</div>' + '</div>';
   document
     .getElementById('bts')
     .addEventListener('click', () => ask('Qdialog'));
@@ -39,21 +39,15 @@ document.addEventListener('DOMContentLoaded', () => {
 function ask(questionInput) {
   var question = document.getElementById(questionInput).value.trim();
   if (question == '') return;
-  //выдвижение диалогового модуля
-  //вывод вопроса
-  //document.getElementById("history").innerHTML+="<div class='question'>"+question+"</div>";
   var newDiv = document.createElement('div');
   newDiv.className = 'question';
   newDiv.innerHTML = question;
   document.getElementById('history').appendChild(newDiv);
-  //поиск и вывод ответа
-  //document.getElementById("history").innerHTML+="<div class='answer'>"+getAnswer(question)+"</div>";
-  //создаем блок <div>
+
   newDiv = document.createElement('div');
-  //задаем класс оформления созданного блока
   newDiv.className = 'answer';
-  //получаем ответ на вопрос и наполняем им созданный блок
   newDiv.innerHTML = getAnswer(question);
+  document.getElementById('history').appendChild(newDiv);
 }
 if (document.getElementById('full-image')) {
   document.getElementById('full-image').addEventListener('click', (e) => {
