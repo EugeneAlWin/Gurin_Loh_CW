@@ -1,9 +1,9 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Quit : MonoBehaviour, IPointerEnterHandler
+public class Quit : MonoBehaviour, IPointerClickHandler
 {
-    public void OnPointerEnter(PointerEventData eventData)
+    public void OnPointerClick(PointerEventData eventData)
     {
         Application.Quit();
     }
