@@ -2,37 +2,38 @@
 <html lang="ru">
   <head id="head">
     <script src="./script/MyTags.js" async></script>
-    <script type="module" src="./script/loadTemplate.js" defer></script>
+    <script type="module" src="./script/script.js" defer></script>
     <link rel="stylesheet" href="./css/styles.min.css" />
     <title>Симулятор установки</title>
   </head>
   <body>
     <nav id="nav"></nav>
-  </body>    <div id="dialog_window">
-      <div class="toggler">
-        <h3 class="toggler_text">&lt;</h3>
-        <h3 class="toggler_text">&lt;</h3>
-        <h3 class="toggler_text">&lt;</h3>
-      </div>
-      <div id="modal_container">
-        <h4 class="label">Задайте ваш вопрос!</h4>
-        <h4 class="header">История:</h4>
-        <div class="history" id="history_container"></div>
-        <div id="input_field">
-          <input
-            type="text"
-            name=""
-            id="input_text"
-            placeholder="Задайте вопрос"
-          />
-          <button id="input_button">Отправить</button>
-          <button id="input_button_micro">&#127908;</button>
-        </div>
-      </div>
-      <div class="toggler">
-        <h3 class="toggler_text">></h3>
-        <h3 class="toggler_text">></h3>
-        <h3 class="toggler_text">></h3>
+  </body>
+  <div id="dialog_window">
+    <div class="toggler">
+      <h3 class="toggler_text">&lt;</h3>
+      <h3 class="toggler_text">&lt;</h3>
+      <h3 class="toggler_text">&lt;</h3>
+    </div>
+    <div id="modal_container">
+      <h4 class="label">Задайте ваш вопрос!</h4>
+      <h4 class="header">История:</h4>
+      <div class="history" id="history_container"></div>
+      <div id="input_field">
+        <input
+          type="text"
+          name=""
+          id="input_text"
+          placeholder="Задайте вопрос"
+        />
+        <button id="input_button">Отправить</button>
+        <button id="input_button_micro">&#127908;</button>
       </div>
     </div>
+    <div class="toggler">
+      <h3 class="toggler_text">></h3>
+      <h3 class="toggler_text">></h3>
+      <h3 class="toggler_text">></h3>
+    </div>
+  </div>
 </html>

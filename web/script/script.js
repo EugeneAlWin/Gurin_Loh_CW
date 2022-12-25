@@ -1,3 +1,83 @@
+// fields
+const dialog = document.getElementById('dialog_window');
+const borderWidth = dialog.getBoundingClientRect().width - dialog.clientWidth;
+const togglerWidth = document.getElementsByClassName('toggler')[0].offsetWidth;
+const dialogOffset = dialog.offsetWidth - (borderWidth + togglerWidth);
+const togglerTextContainer = [
+  ...document.getElementsByClassName('toggler_text'),
+];
+const input = document.getElementById('input_text');
+const inputButton = document.getElementById('input_button');
+const togglers = [...document.getElementsByClassName('toggler')];
+const historyContainer = document.getElementById('history_container');
+const fullImageContainer = document.getElementById('full-image');
+let isModalOpen = false;
+//listeners
+document.addEventListener('DOMContentLoaded', () => {
+  dialog.style = `margin-left: ${-dialogOffset}px`;
+  document.getElementById('head').innerHTML += `
+   <meta charset="UTF-8" />
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   `;
+  document.getElementById('nav').innerHTML = `
+  <ul id="nav__ul">
+        <li class="nav__li"><a href="./index.html">Главная страница</a></li>
+        <li class="nav__li">
+          <a href="./theory.html">Теоретические сведения</a>
+        </li>
+        <li class="nav__li">
+          <a href="./struct.html">Структура установки</a>
+        </li>
+        <li class="nav__li">
+          <a href="./simulator.html">Симулятор установки</a>
+        </li>
+        <li class="nav__li"><a href="./contacts.html">Контакты</a></li>
+      </ul>
+      `;
+});
+
+addEventListener('keydown', (e) => {
+  if (e.key == 'Enter') inputButtonClick();
+});
+inputButton.addEventListener('click', inputButtonClick);
+
+togglers.forEach((i) => {
+  i.addEventListener('click', () => {
+    isModalOpen = !isModalOpen;
+    dialog.style = `margin-left: ${
+      isModalOpen ? borderWidth : -dialogOffset
+    }px`;
+    togglerTextContainer.forEach(
+      (i) => (i.innerText = isModalOpen ? '<' : '>')
+    );
+  });
+});
+fullImageContainer?.addEventListener('click', (e) => {
+  if (e.target.alt == 'someImg') return;
+  fullImageContainer.style = 'display: none';
+});
+
+//funcs
+function inputButtonClick() {
+  if (input.value == '') return;
+  const answer = getAnswer(input.value);
+  historyContainer.innerHTML += `
+  <div class="question_container">
+    <div class="question">${input.value}</div>
+  </div>`;
+  historyContainer.scrollTop = historyContainer.scrollHeight;
+  setTimeout(() => {
+    historyContainer.innerHTML += `
+    <div class="answer_container">
+    <div class="answer">${answer}</div>
+    </div>`;
+    historyContainer.scrollTop = historyContainer.scrollHeight;
+  }, 600);
+  input.value = '';
+}
+
+//trash
 const knowledge = [
   [
     'Электрон',
@@ -301,4 +381,108 @@ const knowledge = [
   ['Портрет Джеймса Уатта', 'представлен', 'здесь'],
   ['Портрет Георга Симона Ома', 'представлен', 'здесь'],
 ];
-export { knowledge };
+const endings = [
+  ['ет', '(ет|ут|ют)'],
+  ['ут', '(ет|ут|ют)'],
+  ['ют', '(ет|ут|ют)'], //1 спряжение
+
+  ['ит', '(ит|ат|ят)'],
+  ['ат', '(ит|ат|ят)'],
+  ['ят', '(ит|ат|ят)'], //2 спряжение
+
+  ['ется', '(ет|ут|ют)ся'],
+  ['утся', '(ет|ут|ют)ся'],
+  ['ются', '(ет|ут|ют)ся'], //1 спряжение, возвратные
+
+  ['ится', '(ит|ат|ят)ся'],
+  ['атся', '(ит|ат|ят)ся'],
+  ['ятся', '(ит|ат|ят)ся'], //2 спряжение, возвратные
+
+  ['ен', 'ен'],
+  ['ена', 'ена'],
+  ['ено', 'ено'],
+  ['ены', 'ены'],
+  ['ан', 'ан'],
+  ['ана', 'ана'],
+  ['ано', 'ано'],
+  ['аны', 'аны'],
+  ['жен', 'жен'],
+  ['жна', 'жна'],
+  ['жно', 'жно'],
+  ['жны', 'жны'], //краткие прилагательные
+];
+const blacklist = ['замена', 'замены', 'атрибут', 'маршрут', 'член', 'нет'];
+
+function getEndingPosition(word) {
+  if (blacklist.indexOf(word) !== -1) return -1;
+  endings.forEach((item, j) => {
+    if (word.substring(word.length - item[0].length) == item[0]) return j;
+  });
+  return -1;
+}
+const lowFirstChar = (str) => str[0].toLowerCase() + str.slice(1);
+const upFirstChar = (str) => str[0].toUpperCase() + str.slice(1);
+
+function getAnswer(question) {
+  let result = false,
+    answer = '',
+    txt = lowFirstChar(question);
+
+  //знаки препинания
+  const separators = new RegExp('[*|\'|"|,|.|!|?|(|)|[|]|/]', 'g');
+  let words = txt.replace(separators, ' ' + '$&').split(' '),
+    predicate = null;
+
+  for (let i = 0; i < words.length; i++) {
+    let endingPosition = getEndingPosition(words[i]);
+    if (endingPosition >= 0) {
+      let wordLength = words[i].length,
+        endingLength = endings[endingPosition][0].length;
+      words[i] =
+        words[i].substring(0, wordLength - endingLength) +
+        endings[endingPosition][1];
+
+      predicate = new RegExp(words[i].toLowerCase());
+
+      if (endings[endingPosition][0] == endings[endingPosition][1]) {
+        predicate = new RegExp(
+          `${words[i].toLowerCase()} ${words[i + 1].toLowerCase()}`
+        );
+      }
+      i++;
+    }
+
+    let subject_string = words.slice(i + 1).join('.*');
+
+    if (subject_string.length > 3) {
+      let subject = new RegExp('.*' + subject_string.toLowerCase() + '.*');
+      for (let j = 0; j < knowledge.length; j++) {
+        const predicateTest = predicate?.test(knowledge[j][1].toLowerCase()),
+          subjectTest = subject.test(knowledge[j][0].toLowerCase()),
+          subjectTest2 = subject.test(knowledge[j][2].toLowerCase());
+        if (predicateTest && (subjectTest || subjectTest2)) {
+          answer += upFirstChar(
+            `${knowledge[j][0]} ${knowledge[j][1]} ${knowledge[j][2]}\n`
+          );
+          result = true;
+        }
+      }
+
+      if (!result) {
+        for (let j = 0; j < knowledge.length; j++) {
+          const subjectTest = subject.test(knowledge[j][0].toLowerCase()),
+            subjectTest2 = subject.test(knowledge[j][2].toLowerCase());
+
+          if (subjectTest || subjectTest2) {
+            answer += upFirstChar(
+              `${knowledge[j][0]} ${knowledge[j][1]} ${knowledge[j][2]}\n`
+            );
+            result = true;
+          }
+        }
+      }
+    }
+  }
+  if (!result) answer = 'Ответ не найден. <br/>';
+  return answer.split('\n')[0];
+}
