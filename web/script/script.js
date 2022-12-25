@@ -1,6 +1,7 @@
 // fields
 const dialog = document.getElementById('dialog_window');
-const borderWidth = dialog.getBoundingClientRect().width - dialog.clientWidth;
+const borderWidth =
+  (dialog.getBoundingClientRect().width - dialog.clientWidth) / 2;
 const togglerWidth = document.getElementsByClassName('toggler')[0].offsetWidth;
 const dialogOffset = dialog.offsetWidth - (borderWidth + togglerWidth);
 const togglerTextContainer = [
