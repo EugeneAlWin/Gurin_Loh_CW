@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class InstallButtonsPanel : MonoBehaviour, IPointerExitHandler
 {
@@ -17,5 +18,6 @@ public class InstallButtonsPanel : MonoBehaviour, IPointerExitHandler
         {
             child.gameObject.SetActive(false);
         }
+        GameObject.FindGameObjectsWithTag("GT")[0].GetComponent<Text>().text = "";
     }
 }
