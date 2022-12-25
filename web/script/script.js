@@ -8,6 +8,7 @@ const togglerTextContainer = [
 ];
 const input = document.getElementById('input_text');
 const inputButton = document.getElementById('input_button');
+const inputButtonMicro = document.getElementById('input_button_micro');
 const togglers = [...document.getElementsByClassName('toggler')];
 const historyContainer = document.getElementById('history_container');
 const fullImageContainer = document.getElementById('full-image');
@@ -38,9 +39,10 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 addEventListener('keydown', (e) => {
-  if (e.key == 'Enter') inputButtonClick();
+  if (e.key == 'Enter') askAndGetAnswer(input.value);
 });
-inputButton.addEventListener('click', inputButtonClick);
+inputButton.addEventListener('click', () => askAndGetAnswer(input.value));
+inputButtonMicro.addEventListener('click', recognizeAndAsk);
 
 togglers.forEach((i) => {
   i.addEventListener('click', () => {
@@ -59,12 +61,12 @@ fullImageContainer?.addEventListener('click', (e) => {
 });
 
 //funcs
-function inputButtonClick() {
-  if (input.value == '') return;
-  const answer = getAnswer(input.value);
+function askAndGetAnswer(question = '') {
+  if (question == '') return;
+  const answer = getAnswer(question);
   historyContainer.innerHTML += `
   <div class="question_container">
-    <div class="question">${input.value}</div>
+    <div class="question">${question}</div>
   </div>`;
   historyContainer.scrollTop = historyContainer.scrollHeight;
   setTimeout(() => {
@@ -72,9 +74,27 @@ function inputButtonClick() {
     <div class="answer_container">
     <div class="answer">${answer}</div>
     </div>`;
+    let synth = window.speechSynthesis;
+    let utterance = new SpeechSynthesisUtterance(answer);
+    utterance.rate = 1.8;
+    synth.speak(utterance);
     historyContainer.scrollTop = historyContainer.scrollHeight;
   }, 600);
   input.value = '';
+}
+
+function recognizeAndAsk() {
+  let recognizer = new webkitSpeechRecognition();
+  recognizer.interimResults = true;
+  recognizer.lang = 'ru-Ru';
+
+  recognizer.onresult = function (event) {
+    let result = event.results[event.resultIndex];
+    if (result.isFinal) {
+      askAndGetAnswer(result[0].transcript);
+    }
+  };
+  recognizer.start();
 }
 
 //trash
@@ -430,8 +450,9 @@ function getAnswer(question) {
 
   //знаки препинания
   const separators = new RegExp('[*|\'|"|,|.|!|?|(|)|[|]|/]', 'g');
-  let words = txt.replace(separators, ' ' + '$&').split(' '),
+  let words = txt.replace(separators, '').split(' '),
     predicate = null;
+  console.log(words);
 
   for (let i = 0; i < words.length; i++) {
     let endingPosition = getEndingPosition(words[i]);
