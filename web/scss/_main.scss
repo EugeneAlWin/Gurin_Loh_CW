@@ -18,9 +18,9 @@ h3 {
 }
 h4 {
   color: white;
-  text-align: center;
+  text-align: left;
   font-size: 16pt;
-  margin-bottom: 2%;
+  margin-bottom: 1%;
 }
 
 #by {
@@ -66,12 +66,12 @@ h4 {
 .main-text-container {
   width: 80%;
   margin: auto;
-  text-align: left;
+  text-align: center;
 }
 
 #full-image {
   z-index: 1;
-  position: absolute;
+  position: fixed;
   background-color: rgba(#000, 0.9);
   width: 100%;
   height: 100%;
@@ -91,4 +91,14 @@ h4 {
 flip-text {
   color: red;
   cursor: pointer;
+}
+.hov {
+  transition: 0.5s;
+  max-width: 450px;
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+mark {
+  color: red;
 }

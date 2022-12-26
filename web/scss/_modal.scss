@@ -3,7 +3,7 @@ $modalWidth: 94%;
 
 #dialog_window {
   border-radius: 30px;
-  position: absolute;
+  position: fixed;
   top: 50%;
   background-color: $bg-color;
   border: 8px solid #069157;
