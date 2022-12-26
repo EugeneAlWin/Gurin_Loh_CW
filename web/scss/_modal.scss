@@ -63,6 +63,12 @@ $modalWidth: 94%;
   width: fit-content;
   background-color: #3a3e45;
   border-radius: 20px;
+  img {
+    width: 90%;
+    &:hover {
+      transform: scale(1.08);
+    }
+  }
 }
 
 #input_text {
