@@ -30,3 +30,24 @@
     }
   }
 }
+
+@media screen and (max-width: 734px) {
+  .nav__li {
+    padding: 0 2% !important;
+    font-size: unset !important;
+  }
+}
+
+@media screen and (max-width: 497px) {
+  #nav__ul {
+    flex-flow: row wrap;
+    .nav__li {
+      width: 100%;
+      margin-bottom: 2px;
+      margin-top: 2px;
+    }
+  }
+  #nav {
+    height: 110px;
+  }
+}
