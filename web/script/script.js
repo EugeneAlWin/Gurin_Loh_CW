@@ -521,7 +521,6 @@ function getAnswer(question) {
   const separators = new RegExp('[*|\'|"|,|.|!|?|(|)|[|]|/]', 'g');
   let words = txt.replace(separators, '').split(' '),
     predicate = null;
-  console.log(words);
 
   for (let i = 0; i < words.length; i++) {
     let endingPosition = getEndingPosition(words[i]);
